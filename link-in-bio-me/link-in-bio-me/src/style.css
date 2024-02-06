@@ -1,0 +1,142 @@
+/* Define custom properties for light and dark themes */
+:root {
+    /* Light theme colors */
+    --background-color-light: #f4f4f4; /* Light background color */
+    --text-color-light: #333; /* Light text color */
+    --header-footer-bg-light: #ffffff; /* Light header and footer background */
+    --link-color-light: #007bff; /* Light theme link color */
+    --link-bg-light: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); /* Light theme link background gradient */
+
+    /* Dark theme colors */
+    --background-color-dark: #121212; /* Dark background color */
+    --text-color-dark: #e0e0e0; /* Dark text color */
+    --header-footer-bg-dark: #333333; /* Dark header and footer background */
+    --link-color-dark: #9ecfff; /* Dark theme link color */
+    --link-bg-dark: linear-gradient(to right, #232526, #414345); /* Dark theme link background gradient */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="light"] {
+    --background-color: var(--background-color-light);
+    --text-color: var(--text-color-light);
+    --header-footer-bg: var(--header-footer-bg-light);
+    --link-color: var(--link-color-light);
+    --link-bg: var(--link-bg-light);
+}
+
+[data-theme="dark"] {
+    --background-color: var(--background-color-dark);
+    --text-color: var(--text-color-dark);
+    --header-footer-bg: var(--header-footer-bg-dark);
+    --link-color: var(--link-color-dark);
+    --link-bg: var(--link-bg-dark);
+}
+
+header, footer {
+    background-color: var(--header-footer-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+li {
+    background-image: var(--link-bg);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+    display: block;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Toggle Switch Styles */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 10px; /* Adjust spacing to fit your header layout */
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
